@@ -1,0 +1,28 @@
+﻿<Window x:Class="Home_associat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Query" Height="25" Width="47" >
+                <MenuItem Header="Select" Click="Button_Click" />
+                <MenuItem Header="Add" Click="Button_Click_1" />
+                <MenuItem Header="Update" Click="Button_Click_2"/>
+                <MenuItem Header="Delete" Click="Button_Click_3"/>
+            </MenuItem>
+            <MenuItem Header="Advanced query" Height="25" Width="101" Click="Button_Click_4" />
+            <MenuItem Header="Report" Height="25" Width="50">
+                <MenuItem Header="Bring the debtors" Click="MenuItem_Click_1"/>
+                <MenuItem Header="Withdrawal of monthly income" Click="MenuItem_Click_2"/>
+            </MenuItem>
+            <MenuItem Header="Search" Width="50">
+                <MenuItem Header="Search by apartment owners" Click="MenuItem_Click_3"/>
+                <MenuItem Header="Search for all links" Click="MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid Grid.Column="0" Margin="10,35,10,10" AutoGenerateColumns="True" Name="SelectGrid" ColumnWidth="*"/>
+    </Grid>
+</Window>

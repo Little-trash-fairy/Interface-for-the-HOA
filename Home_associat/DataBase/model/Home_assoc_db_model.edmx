@@ -1,0 +1,1335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Homeowners_AssociationModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Apartment_number">
+          <Key>
+            <PropertyRef Name="id_apartment_number" />
+          </Key>
+          <Property Name="id_apartment_number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="apartment_number" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Benefits">
+          <Key>
+            <PropertyRef Name="id_benefits" />
+          </Key>
+          <Property Name="id_benefits" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="benefits_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="benefits_factor" Type="money" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="id_building" />
+          </Key>
+          <Property Name="id_building" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="house_number" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="number_of_apartments" Type="int" Nullable="false" />
+          <Property Name="tenants_count" Type="int" Nullable="false" />
+          <Property Name="total_house_area" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="area_of_public_areas" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Counter">
+          <Key>
+            <PropertyRef Name="id_counter" />
+          </Key>
+          <Property Name="id_counter" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_check" Type="date" Nullable="false" />
+          <Property Name="installation_date" Type="date" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Flat">
+          <Key>
+            <PropertyRef Name="id_flat" />
+          </Key>
+          <Property Name="id_flat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="area_apartments" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="count_tenant_of_flat" Type="int" Nullable="false" />
+          <Property Name="flat_number" Type="int" Nullable="false" />
+          <Property Name="id_building" Type="int" Nullable="false" />
+          <Property Name="tenant_payment_account" Type="int" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="List_of_services">
+          <Key>
+            <PropertyRef Name="id_list_of_services" />
+          </Key>
+          <Property Name="id_list_of_services" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="service_count" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="service_id" Type="int" Nullable="false" />
+          <Property Name="counter_id" Type="int" Nullable="false" />
+          <Property Name="id_monthly_bill" Type="int" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Monthly_bill">
+          <Key>
+            <PropertyRef Name="id_monthly_bill" />
+          </Key>
+          <Property Name="id_monthly_bill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_flat" Type="int" />
+          <Property Name="invoice_date" Type="date" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="payment_account" />
+          </Key>
+          <Property Name="payment_account" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="person_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="person_second_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="debt" Type="money" Nullable="false" />
+          <Property Name="person_benefits" Type="int" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="id_provider" />
+          </Key>
+          <Property Name="id_provider" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="provider_name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="id_rate" />
+          </Key>
+          <Property Name="id_rate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_begin" Type="date" Nullable="false" />
+          <Property Name="date_end" Type="date" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="id_provider" Type="int" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="id_service" />
+          </Key>
+          <Property Name="id_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_of_the_service" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="full_description" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Date_of_contract_conclusion" Type="date" Nullable="false" />
+          <Property Name="rate_id" Type="int" Nullable="false" />
+          <Property Name="unit_id" Type="int" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Homeowners_Association.dbo.Tenant_of_flat" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Tenant_of_flat">
+          <Key>
+            <PropertyRef Name="id_flat" />
+            <PropertyRef Name="tenant_payment_account" />
+          </Key>
+          <Property Name="id_flat" Type="int" Nullable="false" />
+          <Property Name="tenant_payment_account" Type="int" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="id_unit" />
+          </Key>
+          <Property Name="id_unit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unit" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="is_zip" Type="bit" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Homeowners_Association.dbo.Adress" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="street" />
+            <PropertyRef Name="house_number" />
+            <PropertyRef Name="flat_number" />
+            <PropertyRef Name="count_tenant_of_flat" />
+          </Key>
+          <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="house_number" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="flat_number" Type="int" Nullable="false" />
+          <Property Name="count_tenant_of_flat" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Homeowners_Association.dbo.Flat_owner" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Flat_owner">
+          <Key>
+            <PropertyRef Name="payment_account" />
+            <PropertyRef Name="person_name" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="debt" />
+            <PropertyRef Name="id_flat" />
+            <PropertyRef Name="area_apartments" />
+            <PropertyRef Name="count_tenant_of_flat" />
+            <PropertyRef Name="flat_number" />
+            <PropertyRef Name="id_building" />
+            <PropertyRef Name="tenant_payment_account" />
+          </Key>
+          <Property Name="payment_account" Type="int" Nullable="false" />
+          <Property Name="person_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="person_second_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="debt" Type="money" Nullable="false" />
+          <Property Name="person_benefits" Type="int" />
+          <Property Name="id_flat" Type="int" Nullable="false" />
+          <Property Name="area_apartments" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="count_tenant_of_flat" Type="int" Nullable="false" />
+          <Property Name="flat_number" Type="int" Nullable="false" />
+          <Property Name="id_building" Type="int" Nullable="false" />
+          <Property Name="tenant_payment_account" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Homeowners_Association.dbo.Person_view" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Person_view">
+          <Key>
+            <PropertyRef Name="Имя" />
+            <PropertyRef Name="Фамилия" />
+            <PropertyRef Name="Счёт" />
+          </Key>
+          <Property Name="Имя" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="100" />
+          <Property Name="Счёт" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Homeowners_Association.dbo.Tenant" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="apartment_number" />
+            <PropertyRef Name="person_name" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="debt" />
+            <PropertyRef Name="benefits_name" />
+            <PropertyRef Name="benefits_factor" />
+          </Key>
+          <Property Name="apartment_number" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="person_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="person_second_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="debt" Type="money" Nullable="false" />
+          <Property Name="benefits_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="benefits_factor" Type="money" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Flat__flat_numbe__5165187F">
+          <End Role="Apartment_number" Type="Self.Apartment_number" Multiplicity="1" />
+          <End Role="Flat" Type="Self.Flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartment_number">
+              <PropertyRef Name="id_apartment_number" />
+            </Principal>
+            <Dependent Role="Flat">
+              <PropertyRef Name="flat_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flat__id_buildin__52593CB8">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="Flat" Type="Self.Flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id_building" />
+            </Principal>
+            <Dependent Role="Flat">
+              <PropertyRef Name="id_building" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flat__tenant_pay__534D60F1">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Flat" Type="Self.Flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="payment_account" />
+            </Principal>
+            <Dependent Role="Flat">
+              <PropertyRef Name="tenant_payment_account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__List_of_s__count__6754599E">
+          <End Role="Counter" Type="Self.Counter" Multiplicity="1" />
+          <End Role="List_of_services" Type="Self.List_of_services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counter">
+              <PropertyRef Name="id_counter" />
+            </Principal>
+            <Dependent Role="List_of_services">
+              <PropertyRef Name="counter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__List_of_s__id_mo__68487DD7">
+          <End Role="Monthly_bill" Type="Self.Monthly_bill" Multiplicity="1" />
+          <End Role="List_of_services" Type="Self.List_of_services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Monthly_bill">
+              <PropertyRef Name="id_monthly_bill" />
+            </Principal>
+            <Dependent Role="List_of_services">
+              <PropertyRef Name="id_monthly_bill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__List_of_s__servi__66603565">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="List_of_services" Type="Self.List_of_services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="id_service" />
+            </Principal>
+            <Dependent Role="List_of_services">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Monthly_b__id_fl__628FA481">
+          <End Role="Flat" Type="Self.Flat" Multiplicity="0..1" />
+          <End Role="Monthly_bill" Type="Self.Monthly_bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flat">
+              <PropertyRef Name="id_flat" />
+            </Principal>
+            <Dependent Role="Monthly_bill">
+              <PropertyRef Name="id_flat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__person_b__4CA06362">
+          <End Role="Benefits" Type="Self.Benefits" Multiplicity="0..1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Benefits">
+              <PropertyRef Name="id_benefits" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="person_benefits" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rate__id_provide__4316F928">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="id_provider" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="id_provider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service__rate_id__5DCAEF64">
+          <End Role="Rate" Type="Self.Rate" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rate">
+              <PropertyRef Name="id_rate" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="rate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service__unit_id__5EBF139D">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="id_unit" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tenant_of__id_fl__5629CD9C">
+          <End Role="Flat" Type="Self.Flat" Multiplicity="1" />
+          <End Role="Tenant_of_flat" Type="Self.Tenant_of_flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flat">
+              <PropertyRef Name="id_flat" />
+            </Principal>
+            <Dependent Role="Tenant_of_flat">
+              <PropertyRef Name="id_flat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tenant_of__tenan__571DF1D5">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Tenant_of_flat" Type="Self.Tenant_of_flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="payment_account" />
+            </Principal>
+            <Dependent Role="Tenant_of_flat">
+              <PropertyRef Name="tenant_payment_account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CheckValidname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit">
+          <Parameter Name="string" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="createRandomString" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="minLength" Type="int" Mode="In" />
+          <Parameter Name="maxLength" Type="int" Mode="In" />
+          <Parameter Name="chars" Type="varchar" Mode="In" />
+          <Parameter Name="randomString" Type="varchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="FillApartNumb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillBenefits" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillBuilding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillCounter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillFlat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillListOfServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillMonthlyBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillPerson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillRandValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillService" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillTenantOfFlat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FillUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="max_row" Type="int" Mode="In" />
+          <Parameter Name="Start_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_PickRandomChar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char">
+          <Parameter Name="chars" Type="varchar(max)" Mode="In" />
+          <Parameter Name="rand" Type="float" Mode="In" />
+        </Function>
+        <Function Name="fn_RandIntBetween" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="lower" Type="int" Mode="In" />
+          <Parameter Name="upper" Type="int" Mode="In" />
+          <Parameter Name="rand" Type="float" Mode="In" />
+        </Function>
+        <Function Name="randDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rndDate" Type="date" Mode="InOut" />
+        </Function>
+        <Function Name="randomInt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inputSize" Type="int" Mode="In" />
+          <Parameter Name="outputInteger" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="Хранилище Homeowners_AssociationModelContainer">
+          <EntitySet Name="Apartment_number" EntityType="Self.Apartment_number" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Benefits" EntityType="Self.Benefits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Counter" EntityType="Self.Counter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flat" EntityType="Self.Flat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="List_of_services" EntityType="Self.List_of_services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monthly_bill" EntityType="Self.Monthly_bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tenant_of_flat" EntityType="Self.Tenant_of_flat" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tenant_of_flat].[id_flat] AS [id_flat], 
+    [Tenant_of_flat].[tenant_payment_account] AS [tenant_payment_account], 
+    [Tenant_of_flat].[is_zip] AS [is_zip]
+    FROM [dbo].[Tenant_of_flat] AS [Tenant_of_flat]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Adress" EntityType="Self.Adress" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Adress].[street] AS [street], 
+    [Adress].[house_number] AS [house_number], 
+    [Adress].[flat_number] AS [flat_number], 
+    [Adress].[count_tenant_of_flat] AS [count_tenant_of_flat]
+    FROM [dbo].[Adress] AS [Adress]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Flat_owner" EntityType="Self.Flat_owner" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Flat_owner].[payment_account] AS [payment_account], 
+    [Flat_owner].[person_name] AS [person_name], 
+    [Flat_owner].[Surname] AS [Surname], 
+    [Flat_owner].[person_second_name] AS [person_second_name], 
+    [Flat_owner].[debt] AS [debt], 
+    [Flat_owner].[person_benefits] AS [person_benefits], 
+    [Flat_owner].[id_flat] AS [id_flat], 
+    [Flat_owner].[area_apartments] AS [area_apartments], 
+    [Flat_owner].[count_tenant_of_flat] AS [count_tenant_of_flat], 
+    [Flat_owner].[flat_number] AS [flat_number], 
+    [Flat_owner].[id_building] AS [id_building], 
+    [Flat_owner].[tenant_payment_account] AS [tenant_payment_account]
+    FROM [dbo].[Flat_owner] AS [Flat_owner]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Person_view" EntityType="Self.Person_view" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Person_view].[Имя] AS [Имя], 
+    [Person_view].[Фамилия] AS [Фамилия], 
+    [Person_view].[Отчество] AS [Отчество], 
+    [Person_view].[Счёт] AS [Счёт]
+    FROM [dbo].[Person_view] AS [Person_view]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tenant" EntityType="Self.Tenant" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tenant].[apartment_number] AS [apartment_number], 
+    [Tenant].[person_name] AS [person_name], 
+    [Tenant].[Surname] AS [Surname], 
+    [Tenant].[person_second_name] AS [person_second_name], 
+    [Tenant].[debt] AS [debt], 
+    [Tenant].[benefits_name] AS [benefits_name], 
+    [Tenant].[benefits_factor] AS [benefits_factor]
+    FROM [dbo].[Tenant] AS [Tenant]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Flat__flat_numbe__5165187F" Association="Self.FK__Flat__flat_numbe__5165187F">
+            <End Role="Apartment_number" EntitySet="Apartment_number" />
+            <End Role="Flat" EntitySet="Flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flat__id_buildin__52593CB8" Association="Self.FK__Flat__id_buildin__52593CB8">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Flat" EntitySet="Flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flat__tenant_pay__534D60F1" Association="Self.FK__Flat__tenant_pay__534D60F1">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Flat" EntitySet="Flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__List_of_s__count__6754599E" Association="Self.FK__List_of_s__count__6754599E">
+            <End Role="Counter" EntitySet="Counter" />
+            <End Role="List_of_services" EntitySet="List_of_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__List_of_s__id_mo__68487DD7" Association="Self.FK__List_of_s__id_mo__68487DD7">
+            <End Role="Monthly_bill" EntitySet="Monthly_bill" />
+            <End Role="List_of_services" EntitySet="List_of_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__List_of_s__servi__66603565" Association="Self.FK__List_of_s__servi__66603565">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="List_of_services" EntitySet="List_of_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Monthly_b__id_fl__628FA481" Association="Self.FK__Monthly_b__id_fl__628FA481">
+            <End Role="Flat" EntitySet="Flat" />
+            <End Role="Monthly_bill" EntitySet="Monthly_bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__person_b__4CA06362" Association="Self.FK__Person__person_b__4CA06362">
+            <End Role="Benefits" EntitySet="Benefits" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rate__id_provide__4316F928" Association="Self.FK__Rate__id_provide__4316F928">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service__rate_id__5DCAEF64" Association="Self.FK__Service__rate_id__5DCAEF64">
+            <End Role="Rate" EntitySet="Rate" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service__unit_id__5EBF139D" Association="Self.FK__Service__unit_id__5EBF139D">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tenant_of__id_fl__5629CD9C" Association="Self.FK__Tenant_of__id_fl__5629CD9C">
+            <End Role="Flat" EntitySet="Flat" />
+            <End Role="Tenant_of_flat" EntitySet="Tenant_of_flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tenant_of__tenan__571DF1D5" Association="Self.FK__Tenant_of__tenan__571DF1D5">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Tenant_of_flat" EntitySet="Tenant_of_flat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Homeowners_AssociationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Apartment_number">
+          <Key>
+            <PropertyRef Name="id_apartment_number" />
+          </Key>
+          <Property Name="id_apartment_number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apartment_number1" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Flat" Relationship="Self.FK__Flat__flat_numbe__5165187F" FromRole="Apartment_number" ToRole="Flat" />
+        </EntityType>
+        <EntityType Name="Benefits">
+          <Key>
+            <PropertyRef Name="id_benefits" />
+          </Key>
+          <Property Name="id_benefits" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="benefits_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="benefits_factor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__Person__person_b__4CA06362" FromRole="Benefits" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="id_building" />
+          </Key>
+          <Property Name="id_building" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="house_number" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="number_of_apartments" Type="Int32" Nullable="false" />
+          <Property Name="tenants_count" Type="Int32" Nullable="false" />
+          <Property Name="total_house_area" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="area_of_public_areas" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Flat" Relationship="Self.FK__Flat__id_buildin__52593CB8" FromRole="Building" ToRole="Flat" />
+        </EntityType>
+        <EntityType Name="Counter">
+          <Key>
+            <PropertyRef Name="id_counter" />
+          </Key>
+          <Property Name="id_counter" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_check" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="installation_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="List_of_services" Relationship="Self.FK__List_of_s__count__6754599E" FromRole="Counter" ToRole="List_of_services" />
+        </EntityType>
+        <EntityType Name="Flat">
+          <Key>
+            <PropertyRef Name="id_flat" />
+          </Key>
+          <Property Name="id_flat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="area_apartments" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="count_tenant_of_flat" Type="Int32" Nullable="false" />
+          <Property Name="flat_number" Type="Int32" Nullable="false" />
+          <Property Name="id_building" Type="Int32" Nullable="false" />
+          <Property Name="tenant_payment_account" Type="Int32" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Apartment_number" Relationship="Self.FK__Flat__flat_numbe__5165187F" FromRole="Flat" ToRole="Apartment_number" />
+          <NavigationProperty Name="Building" Relationship="Self.FK__Flat__id_buildin__52593CB8" FromRole="Flat" ToRole="Building" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__Flat__tenant_pay__534D60F1" FromRole="Flat" ToRole="Person" />
+          <NavigationProperty Name="Monthly_bill" Relationship="Self.FK__Monthly_b__id_fl__628FA481" FromRole="Flat" ToRole="Monthly_bill" />
+          <NavigationProperty Name="Tenant_of_flat" Relationship="Self.FK__Tenant_of__id_fl__5629CD9C" FromRole="Flat" ToRole="Tenant_of_flat" />
+        </EntityType>
+        <EntityType Name="List_of_services">
+          <Key>
+            <PropertyRef Name="id_list_of_services" />
+          </Key>
+          <Property Name="id_list_of_services" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="service_count" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="service_id" Type="Int32" Nullable="false" />
+          <Property Name="counter_id" Type="Int32" Nullable="false" />
+          <Property Name="id_monthly_bill" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Counter" Relationship="Self.FK__List_of_s__count__6754599E" FromRole="List_of_services" ToRole="Counter" />
+          <NavigationProperty Name="Monthly_bill" Relationship="Self.FK__List_of_s__id_mo__68487DD7" FromRole="List_of_services" ToRole="Monthly_bill" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__List_of_s__servi__66603565" FromRole="List_of_services" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Monthly_bill">
+          <Key>
+            <PropertyRef Name="id_monthly_bill" />
+          </Key>
+          <Property Name="id_monthly_bill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_flat" Type="Int32" />
+          <Property Name="invoice_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Flat" Relationship="Self.FK__Monthly_b__id_fl__628FA481" FromRole="Monthly_bill" ToRole="Flat" />
+          <NavigationProperty Name="List_of_services" Relationship="Self.FK__List_of_s__id_mo__68487DD7" FromRole="Monthly_bill" ToRole="List_of_services" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="payment_account" />
+          </Key>
+          <Property Name="payment_account" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="person_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="person_second_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="debt" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="person_benefits" Type="Int32" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Benefits" Relationship="Self.FK__Person__person_b__4CA06362" FromRole="Person" ToRole="Benefits" />
+          <NavigationProperty Name="Flat" Relationship="Self.FK__Flat__tenant_pay__534D60F1" FromRole="Person" ToRole="Flat" />
+          <NavigationProperty Name="Tenant_of_flat" Relationship="Self.FK__Tenant_of__tenan__571DF1D5" FromRole="Person" ToRole="Tenant_of_flat" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="id_provider" />
+          </Key>
+          <Property Name="id_provider" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="provider_name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Rate" Relationship="Self.FK__Rate__id_provide__4316F928" FromRole="Provider" ToRole="Rate" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="id_rate" />
+          </Key>
+          <Property Name="id_rate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_begin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_end" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="id_provider" Type="Int32" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Provider" Relationship="Self.FK__Rate__id_provide__4316F928" FromRole="Rate" ToRole="Provider" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__Service__rate_id__5DCAEF64" FromRole="Rate" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="id_service" />
+          </Key>
+          <Property Name="id_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_of_the_service" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="full_description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_of_contract_conclusion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="rate_id" Type="Int32" Nullable="false" />
+          <Property Name="unit_id" Type="Int32" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="List_of_services" Relationship="Self.FK__List_of_s__servi__66603565" FromRole="Service" ToRole="List_of_services" />
+          <NavigationProperty Name="Rate" Relationship="Self.FK__Service__rate_id__5DCAEF64" FromRole="Service" ToRole="Rate" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK__Service__unit_id__5EBF139D" FromRole="Service" ToRole="Unit" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="id_unit" />
+          </Key>
+          <Property Name="id_unit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unit1" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__Service__unit_id__5EBF139D" FromRole="Unit" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Tenant_of_flat">
+          <Key>
+            <PropertyRef Name="id_flat" />
+            <PropertyRef Name="tenant_payment_account" />
+          </Key>
+          <Property Name="id_flat" Type="Int32" Nullable="false" />
+          <Property Name="tenant_payment_account" Type="Int32" Nullable="false" />
+          <Property Name="is_zip" Type="Boolean" />
+          <NavigationProperty Name="Flat" Relationship="Self.FK__Tenant_of__id_fl__5629CD9C" FromRole="Tenant_of_flat" ToRole="Flat" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__Tenant_of__tenan__571DF1D5" FromRole="Tenant_of_flat" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="street" />
+            <PropertyRef Name="house_number" />
+            <PropertyRef Name="flat_number" />
+            <PropertyRef Name="count_tenant_of_flat" />
+          </Key>
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="house_number" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="flat_number" Type="Int32" Nullable="false" />
+          <Property Name="count_tenant_of_flat" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flat_owner">
+          <Key>
+            <PropertyRef Name="payment_account" />
+            <PropertyRef Name="person_name" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="debt" />
+            <PropertyRef Name="id_flat" />
+            <PropertyRef Name="area_apartments" />
+            <PropertyRef Name="count_tenant_of_flat" />
+            <PropertyRef Name="flat_number" />
+            <PropertyRef Name="id_building" />
+            <PropertyRef Name="tenant_payment_account" />
+          </Key>
+          <Property Name="payment_account" Type="Int32" Nullable="false" />
+          <Property Name="person_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="person_second_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="debt" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="person_benefits" Type="Int32" />
+          <Property Name="id_flat" Type="Int32" Nullable="false" />
+          <Property Name="area_apartments" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="count_tenant_of_flat" Type="Int32" Nullable="false" />
+          <Property Name="flat_number" Type="Int32" Nullable="false" />
+          <Property Name="id_building" Type="Int32" Nullable="false" />
+          <Property Name="tenant_payment_account" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person_view">
+          <Key>
+            <PropertyRef Name="Имя" />
+            <PropertyRef Name="Фамилия" />
+            <PropertyRef Name="Счёт" />
+          </Key>
+          <Property Name="Имя" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Счёт" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="apartment_number" />
+            <PropertyRef Name="person_name" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="debt" />
+            <PropertyRef Name="benefits_name" />
+            <PropertyRef Name="benefits_factor" />
+          </Key>
+          <Property Name="apartment_number" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="person_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="person_second_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="debt" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="benefits_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="benefits_factor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Flat__flat_numbe__5165187F">
+          <End Role="Apartment_number" Type="Self.Apartment_number" Multiplicity="1" />
+          <End Role="Flat" Type="Self.Flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartment_number">
+              <PropertyRef Name="id_apartment_number" />
+            </Principal>
+            <Dependent Role="Flat">
+              <PropertyRef Name="flat_number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__person_b__4CA06362">
+          <End Role="Benefits" Type="Self.Benefits" Multiplicity="0..1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Benefits">
+              <PropertyRef Name="id_benefits" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="person_benefits" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flat__id_buildin__52593CB8">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="Flat" Type="Self.Flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id_building" />
+            </Principal>
+            <Dependent Role="Flat">
+              <PropertyRef Name="id_building" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__List_of_s__count__6754599E">
+          <End Role="Counter" Type="Self.Counter" Multiplicity="1" />
+          <End Role="List_of_services" Type="Self.List_of_services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Counter">
+              <PropertyRef Name="id_counter" />
+            </Principal>
+            <Dependent Role="List_of_services">
+              <PropertyRef Name="counter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flat__tenant_pay__534D60F1">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Flat" Type="Self.Flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="payment_account" />
+            </Principal>
+            <Dependent Role="Flat">
+              <PropertyRef Name="tenant_payment_account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Monthly_b__id_fl__628FA481">
+          <End Role="Flat" Type="Self.Flat" Multiplicity="0..1" />
+          <End Role="Monthly_bill" Type="Self.Monthly_bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flat">
+              <PropertyRef Name="id_flat" />
+            </Principal>
+            <Dependent Role="Monthly_bill">
+              <PropertyRef Name="id_flat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tenant_of__id_fl__5629CD9C">
+          <End Role="Flat" Type="Self.Flat" Multiplicity="1" />
+          <End Role="Tenant_of_flat" Type="Self.Tenant_of_flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flat">
+              <PropertyRef Name="id_flat" />
+            </Principal>
+            <Dependent Role="Tenant_of_flat">
+              <PropertyRef Name="id_flat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__List_of_s__id_mo__68487DD7">
+          <End Role="Monthly_bill" Type="Self.Monthly_bill" Multiplicity="1" />
+          <End Role="List_of_services" Type="Self.List_of_services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Monthly_bill">
+              <PropertyRef Name="id_monthly_bill" />
+            </Principal>
+            <Dependent Role="List_of_services">
+              <PropertyRef Name="id_monthly_bill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__List_of_s__servi__66603565">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="List_of_services" Type="Self.List_of_services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="id_service" />
+            </Principal>
+            <Dependent Role="List_of_services">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tenant_of__tenan__571DF1D5">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Tenant_of_flat" Type="Self.Tenant_of_flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="payment_account" />
+            </Principal>
+            <Dependent Role="Tenant_of_flat">
+              <PropertyRef Name="tenant_payment_account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rate__id_provide__4316F928">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="1" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="id_provider" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="id_provider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service__rate_id__5DCAEF64">
+          <End Role="Rate" Type="Self.Rate" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rate">
+              <PropertyRef Name="id_rate" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="rate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Service__unit_id__5EBF139D">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="id_unit" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Homeowners_AssociationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apartment_number" EntityType="Self.Apartment_number" />
+          <EntitySet Name="Benefits" EntityType="Self.Benefits" />
+          <EntitySet Name="Building" EntityType="Self.Building" />
+          <EntitySet Name="Counter" EntityType="Self.Counter" />
+          <EntitySet Name="Flat" EntityType="Self.Flat" />
+          <EntitySet Name="List_of_services" EntityType="Self.List_of_services" />
+          <EntitySet Name="Monthly_bill" EntityType="Self.Monthly_bill" />
+          <EntitySet Name="Person" EntityType="Self.Person" />
+          <EntitySet Name="Provider" EntityType="Self.Provider" />
+          <EntitySet Name="Rate" EntityType="Self.Rate" />
+          <EntitySet Name="Service" EntityType="Self.Service" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" />
+          <EntitySet Name="Tenant_of_flat" EntityType="Self.Tenant_of_flat" />
+          <EntitySet Name="Adress" EntityType="Self.Adress" />
+          <EntitySet Name="Flat_owner" EntityType="Self.Flat_owner" />
+          <EntitySet Name="Person_view" EntityType="Self.Person_view" />
+          <EntitySet Name="Tenant" EntityType="Self.Tenant" />
+          <AssociationSet Name="FK__Flat__flat_numbe__5165187F" Association="Self.FK__Flat__flat_numbe__5165187F">
+            <End Role="Apartment_number" EntitySet="Apartment_number" />
+            <End Role="Flat" EntitySet="Flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__person_b__4CA06362" Association="Self.FK__Person__person_b__4CA06362">
+            <End Role="Benefits" EntitySet="Benefits" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flat__id_buildin__52593CB8" Association="Self.FK__Flat__id_buildin__52593CB8">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Flat" EntitySet="Flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__List_of_s__count__6754599E" Association="Self.FK__List_of_s__count__6754599E">
+            <End Role="Counter" EntitySet="Counter" />
+            <End Role="List_of_services" EntitySet="List_of_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flat__tenant_pay__534D60F1" Association="Self.FK__Flat__tenant_pay__534D60F1">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Flat" EntitySet="Flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Monthly_b__id_fl__628FA481" Association="Self.FK__Monthly_b__id_fl__628FA481">
+            <End Role="Flat" EntitySet="Flat" />
+            <End Role="Monthly_bill" EntitySet="Monthly_bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tenant_of__id_fl__5629CD9C" Association="Self.FK__Tenant_of__id_fl__5629CD9C">
+            <End Role="Flat" EntitySet="Flat" />
+            <End Role="Tenant_of_flat" EntitySet="Tenant_of_flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__List_of_s__id_mo__68487DD7" Association="Self.FK__List_of_s__id_mo__68487DD7">
+            <End Role="Monthly_bill" EntitySet="Monthly_bill" />
+            <End Role="List_of_services" EntitySet="List_of_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__List_of_s__servi__66603565" Association="Self.FK__List_of_s__servi__66603565">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="List_of_services" EntitySet="List_of_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tenant_of__tenan__571DF1D5" Association="Self.FK__Tenant_of__tenan__571DF1D5">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Tenant_of_flat" EntitySet="Tenant_of_flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rate__id_provide__4316F928" Association="Self.FK__Rate__id_provide__4316F928">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service__rate_id__5DCAEF64" Association="Self.FK__Service__rate_id__5DCAEF64">
+            <End Role="Rate" EntitySet="Rate" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Service__unit_id__5EBF139D" Association="Self.FK__Service__unit_id__5EBF139D">
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <FunctionImport Name="createRandomString">
+            <Parameter Name="minLength" Mode="In" Type="Int32" />
+            <Parameter Name="maxLength" Mode="In" Type="Int32" />
+            <Parameter Name="chars" Mode="In" Type="String" />
+            <Parameter Name="randomString" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FillApartNumb">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillBenefits">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillBuilding">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillCounter">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillFlat">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillListOfServices">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillMonthlyBill">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillPerson">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillProvider">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillRandValue">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillRate">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillService">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillTenantOfFlat">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FillUnit">
+            <Parameter Name="max_row" Mode="In" Type="Int32" />
+            <Parameter Name="Start_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="randDate">
+            <Parameter Name="rndDate" Mode="InOut" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="randomInt">
+            <Parameter Name="inputSize" Mode="In" Type="Int32" />
+            <Parameter Name="outputInteger" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Homeowners_AssociationModelContainer" CdmEntityContainer="Homeowners_AssociationEntities">
+          <EntitySetMapping Name="Apartment_number">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Apartment_number">
+              <MappingFragment StoreEntitySet="Apartment_number">
+                <ScalarProperty Name="id_apartment_number" ColumnName="id_apartment_number" />
+                <ScalarProperty Name="apartment_number1" ColumnName="apartment_number" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Benefits">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Benefits">
+              <MappingFragment StoreEntitySet="Benefits">
+                <ScalarProperty Name="id_benefits" ColumnName="id_benefits" />
+                <ScalarProperty Name="benefits_name" ColumnName="benefits_name" />
+                <ScalarProperty Name="benefits_factor" ColumnName="benefits_factor" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Building">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="id_building" ColumnName="id_building" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="house_number" ColumnName="house_number" />
+                <ScalarProperty Name="number_of_apartments" ColumnName="number_of_apartments" />
+                <ScalarProperty Name="tenants_count" ColumnName="tenants_count" />
+                <ScalarProperty Name="total_house_area" ColumnName="total_house_area" />
+                <ScalarProperty Name="area_of_public_areas" ColumnName="area_of_public_areas" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counter">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Counter">
+              <MappingFragment StoreEntitySet="Counter">
+                <ScalarProperty Name="id_counter" ColumnName="id_counter" />
+                <ScalarProperty Name="date_check" ColumnName="date_check" />
+                <ScalarProperty Name="installation_date" ColumnName="installation_date" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flat">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Flat">
+              <MappingFragment StoreEntitySet="Flat">
+                <ScalarProperty Name="id_flat" ColumnName="id_flat" />
+                <ScalarProperty Name="area_apartments" ColumnName="area_apartments" />
+                <ScalarProperty Name="count_tenant_of_flat" ColumnName="count_tenant_of_flat" />
+                <ScalarProperty Name="flat_number" ColumnName="flat_number" />
+                <ScalarProperty Name="id_building" ColumnName="id_building" />
+                <ScalarProperty Name="tenant_payment_account" ColumnName="tenant_payment_account" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="List_of_services">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.List_of_services">
+              <MappingFragment StoreEntitySet="List_of_services">
+                <ScalarProperty Name="id_list_of_services" ColumnName="id_list_of_services" />
+                <ScalarProperty Name="service_count" ColumnName="service_count" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="counter_id" ColumnName="counter_id" />
+                <ScalarProperty Name="id_monthly_bill" ColumnName="id_monthly_bill" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monthly_bill">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Monthly_bill">
+              <MappingFragment StoreEntitySet="Monthly_bill">
+                <ScalarProperty Name="id_monthly_bill" ColumnName="id_monthly_bill" />
+                <ScalarProperty Name="id_flat" ColumnName="id_flat" />
+                <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="payment_account" ColumnName="payment_account" />
+                <ScalarProperty Name="person_name" ColumnName="person_name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="person_second_name" ColumnName="person_second_name" />
+                <ScalarProperty Name="debt" ColumnName="debt" />
+                <ScalarProperty Name="person_benefits" ColumnName="person_benefits" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provider">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Provider">
+              <MappingFragment StoreEntitySet="Provider">
+                <ScalarProperty Name="id_provider" ColumnName="id_provider" />
+                <ScalarProperty Name="provider_name" ColumnName="provider_name" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rate">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Rate">
+              <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="id_rate" ColumnName="id_rate" />
+                <ScalarProperty Name="date_begin" ColumnName="date_begin" />
+                <ScalarProperty Name="date_end" ColumnName="date_end" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="id_provider" ColumnName="id_provider" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="id_service" ColumnName="id_service" />
+                <ScalarProperty Name="name_of_the_service" ColumnName="name_of_the_service" />
+                <ScalarProperty Name="full_description" ColumnName="full_description" />
+                <ScalarProperty Name="Date_of_contract_conclusion" ColumnName="Date_of_contract_conclusion" />
+                <ScalarProperty Name="rate_id" ColumnName="rate_id" />
+                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unit">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="id_unit" ColumnName="id_unit" />
+                <ScalarProperty Name="unit1" ColumnName="unit" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenant_of_flat">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Tenant_of_flat">
+              <MappingFragment StoreEntitySet="Tenant_of_flat">
+                <ScalarProperty Name="id_flat" ColumnName="id_flat" />
+                <ScalarProperty Name="tenant_payment_account" ColumnName="tenant_payment_account" />
+                <ScalarProperty Name="is_zip" ColumnName="is_zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adress">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Adress">
+              <MappingFragment StoreEntitySet="Adress">
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="house_number" ColumnName="house_number" />
+                <ScalarProperty Name="flat_number" ColumnName="flat_number" />
+                <ScalarProperty Name="count_tenant_of_flat" ColumnName="count_tenant_of_flat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flat_owner">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Flat_owner">
+              <MappingFragment StoreEntitySet="Flat_owner">
+                <ScalarProperty Name="payment_account" ColumnName="payment_account" />
+                <ScalarProperty Name="person_name" ColumnName="person_name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="person_second_name" ColumnName="person_second_name" />
+                <ScalarProperty Name="debt" ColumnName="debt" />
+                <ScalarProperty Name="person_benefits" ColumnName="person_benefits" />
+                <ScalarProperty Name="id_flat" ColumnName="id_flat" />
+                <ScalarProperty Name="area_apartments" ColumnName="area_apartments" />
+                <ScalarProperty Name="count_tenant_of_flat" ColumnName="count_tenant_of_flat" />
+                <ScalarProperty Name="flat_number" ColumnName="flat_number" />
+                <ScalarProperty Name="id_building" ColumnName="id_building" />
+                <ScalarProperty Name="tenant_payment_account" ColumnName="tenant_payment_account" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person_view">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Person_view">
+              <MappingFragment StoreEntitySet="Person_view">
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Счёт" ColumnName="Счёт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenant">
+            <EntityTypeMapping TypeName="Homeowners_AssociationModel.Tenant">
+              <MappingFragment StoreEntitySet="Tenant">
+                <ScalarProperty Name="apartment_number" ColumnName="apartment_number" />
+                <ScalarProperty Name="person_name" ColumnName="person_name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="person_second_name" ColumnName="person_second_name" />
+                <ScalarProperty Name="debt" ColumnName="debt" />
+                <ScalarProperty Name="benefits_name" ColumnName="benefits_name" />
+                <ScalarProperty Name="benefits_factor" ColumnName="benefits_factor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="createRandomString" FunctionName="Хранилище Homeowners_AssociationModel.createRandomString" />
+          <FunctionImportMapping FunctionImportName="FillApartNumb" FunctionName="Хранилище Homeowners_AssociationModel.FillApartNumb" />
+          <FunctionImportMapping FunctionImportName="FillBenefits" FunctionName="Хранилище Homeowners_AssociationModel.FillBenefits" />
+          <FunctionImportMapping FunctionImportName="FillBuilding" FunctionName="Хранилище Homeowners_AssociationModel.FillBuilding" />
+          <FunctionImportMapping FunctionImportName="FillCounter" FunctionName="Хранилище Homeowners_AssociationModel.FillCounter" />
+          <FunctionImportMapping FunctionImportName="FillFlat" FunctionName="Хранилище Homeowners_AssociationModel.FillFlat" />
+          <FunctionImportMapping FunctionImportName="FillListOfServices" FunctionName="Хранилище Homeowners_AssociationModel.FillListOfServices" />
+          <FunctionImportMapping FunctionImportName="FillMonthlyBill" FunctionName="Хранилище Homeowners_AssociationModel.FillMonthlyBill" />
+          <FunctionImportMapping FunctionImportName="FillPerson" FunctionName="Хранилище Homeowners_AssociationModel.FillPerson" />
+          <FunctionImportMapping FunctionImportName="FillProvider" FunctionName="Хранилище Homeowners_AssociationModel.FillProvider" />
+          <FunctionImportMapping FunctionImportName="FillRandValue" FunctionName="Хранилище Homeowners_AssociationModel.FillRandValue" />
+          <FunctionImportMapping FunctionImportName="FillRate" FunctionName="Хранилище Homeowners_AssociationModel.FillRate" />
+          <FunctionImportMapping FunctionImportName="FillService" FunctionName="Хранилище Homeowners_AssociationModel.FillService" />
+          <FunctionImportMapping FunctionImportName="FillTenantOfFlat" FunctionName="Хранилище Homeowners_AssociationModel.FillTenantOfFlat" />
+          <FunctionImportMapping FunctionImportName="FillUnit" FunctionName="Хранилище Homeowners_AssociationModel.FillUnit" />
+          <FunctionImportMapping FunctionImportName="randDate" FunctionName="Хранилище Homeowners_AssociationModel.randDate" />
+          <FunctionImportMapping FunctionImportName="randomInt" FunctionName="Хранилище Homeowners_AssociationModel.randomInt" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

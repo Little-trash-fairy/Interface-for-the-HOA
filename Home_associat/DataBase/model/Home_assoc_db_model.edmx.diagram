@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="920dcc6527b744a78667a73db72d067b" Name="Diagram1">
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Apartment_number" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Benefits" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Building" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Counter" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Flat" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.List_of_services" Width="1.5" PointX="9.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Monthly_bill" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Person" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Provider" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Rate" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Service" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Unit" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Tenant_of_flat" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Adress" Width="1.5" PointX="9.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Flat_owner" Width="1.5" PointX="9.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Person_view" Width="1.5" PointX="11.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Homeowners_AssociationModel.Tenant" Width="1.5" PointX="11.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Flat__flat_numbe__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Person__person_b__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Flat__id_buildin__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__List_of_s__count__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Flat__tenant_pay__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Monthly_b__id_fl__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Tenant_of__id_fl__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__List_of_s__id_mo__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__List_of_s__servi__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Tenant_of__tenan__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Rate__id_provide__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Service__rate_id__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="Homeowners_AssociationModel.FK__Service__unit_id__5EBF139D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

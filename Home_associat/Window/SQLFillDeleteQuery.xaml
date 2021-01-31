@@ -1,0 +1,54 @@
+﻿<Window x:Class="Home_associat.SQLFillDeleteQuery"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Home_associat"
+        mc:Ignorable="d"
+        Title="SQLFillDeleteQuery" Height="450" Width="800">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Add a condition" Height="25" Width="100" Click="Button_Click_2"/>
+            <MenuItem Header="Query runs" Height="25" Width="75" Click="Button_Click" />
+            <MenuItem Header="Exit" Height="25" Width="35" Click="MenuItem_Click" />
+        </Menu>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="99*"></ColumnDefinition>
+                <ColumnDefinition Width="99*"></ColumnDefinition>
+                <ColumnDefinition Width="154*"></ColumnDefinition>
+                <ColumnDefinition Width="43*"></ColumnDefinition>
+                <ColumnDefinition Width="173*"></ColumnDefinition>
+                <ColumnDefinition Width="24*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="TName" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="432" Grid.Column="1" Grid.ColumnSpan="4"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Список условий:" VerticalAlignment="Top" Height="33" Width="90"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Название таблицы:" VerticalAlignment="Top" Height="33" Width="90"/>
+            <DataGrid Name ="Condition" AutoGenerateColumns="False" ColumnWidth="*" HorizontalAlignment="Left" Height="85" VerticalAlignment="Top" Width="432" Grid.ColumnSpan="4" Grid.Column="1" Margin="10,10,0,0" Grid.Row="2" Grid.RowSpan="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Имя поля" Binding="{Binding Path=First}" Width="*" />
+                    <DataGridTextColumn Header="Значение" Binding="{Binding Path=Second}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Grid.Column="6" Name ="Hint" ColumnWidth="*" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="242" Grid.Row="1" Grid.RowSpan="5" VerticalAlignment="Top" Width="173" Margin="0,10,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Таблица" Binding="{Binding Path=First}" Width="*" />
+                    <DataGridTextColumn Header="Столбец" Binding="{Binding Path=Second}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

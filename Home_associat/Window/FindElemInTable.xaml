@@ -1,0 +1,54 @@
+﻿<Window x:Class="Home_associat.Window.FindElemInTable"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="FindElemInTable" Height="450" Width="800">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Select table" Height="25" Width="76">
+                <MenuItem Header="Tenants by apartment" Click="MenuItem_Click_1"/>
+                <MenuItem Header="Apartments by tenant (residence permit)" Click="MenuItem_Click_2"/>
+                <MenuItem Header="The apartment on the tenant (possession)" Click="MenuItem_Click_3"/>
+                <MenuItem Header="Monthly bill" Click="MenuItem_Click_4"/>
+            </MenuItem>
+            <MenuItem Header="Exit" Height="25" Width="34" Click="MenuItem_Click"/>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <DataGrid Name="SelectedTableDataGrid" Grid.ColumnSpan="4" Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" ColumnWidth="100">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+            <DataGrid Name="ExtractedTableDataGrid" Grid.Column="8" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="4" ColumnWidth="100"/>
+        </Grid>
+    </Grid>
+</Window>
